@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import  { useState, useEffect } from 'react';
-import { TUF } from "../utils/constants";
+import { TUF } from "../utils/Constants";
 import { MdClose } from "react-icons/md";
 
 const Banner = ({ data }) => {

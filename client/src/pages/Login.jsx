@@ -2,7 +2,7 @@ import { useState } from "react";
 
 // import { axios } from "axios";
 
-import { Logo } from "../utils/constants";
+import { Logo } from "../utils/Constants";
 
 const LoginPage = () => {
     const [user, setUser] = useState({
