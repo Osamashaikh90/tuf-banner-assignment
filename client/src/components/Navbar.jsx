@@ -1,6 +1,6 @@
 // import { useEffect } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
-import {  Logo } from '../utils/constants'
+import { Logo } from '../utils/Constants';
 import { FaMoon } from "react-icons/fa";
 import { GoSun } from "react-icons/go";
 import { IoPersonCircleSharp } from "react-icons/io5";

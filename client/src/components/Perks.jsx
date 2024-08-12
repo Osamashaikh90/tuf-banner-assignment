@@ -5,7 +5,7 @@ import {
   CP,
   CS,
   Youtube,
-} from "../utils/constants";
+} from "../utils/Constants";
 import PerkCard from "./PerkCard";
 const cardContent = [
   {
