@@ -7,16 +7,10 @@ import Home from "./pages/Home";
 import LoginPage from "./pages/Login";
 import HideNavLayout from "./utils/Layout";
 import { useLocation } from "react-router-dom";
+import { AuthorizeUser } from "./middleware/auth";
 function App() {
   const location = useLocation();
-  // const [bannerData, setBannerData] = useState({});
 
-  // useEffect(() => {
-  //   // Fetch banner data from the backend
-  //   axios.get('/api/banner').then(response => {
-  //     setBannerData(response.data);
-  //   });
-  // }, []);
 
   const theme = useSelector((state) => state.theme.theme);
 
@@ -53,7 +47,7 @@ export const appRouter = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: <AuthorizeUser><Dashboard /></AuthorizeUser>,
       },
     ],
   },

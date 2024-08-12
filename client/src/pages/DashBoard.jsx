@@ -1,17 +1,21 @@
 import { FaBookBookmark } from "react-icons/fa6";
-import { useState } from "react";
 import { PiChatsDuotone } from "react-icons/pi";
 import { IoIosLogOut } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { GiVerticalBanner } from "react-icons/gi";
+import { useNavigate } from "react-router-dom";
 // import { useSelector } from "react-redux";
 // import { DateFormatter } from "../utils/helper/DateFormatter";
 // import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
   // const course = useSelector((store)=>store.dashBoard.course);
   // const [completionStatus, setCompletionStatus] = useState({});
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
   return (
     <>
       <div
@@ -46,7 +50,7 @@ const Dashboard = () => {
             </Link>
             <Link to="/">
               {" "}
-              <span className="flex items-center gap-4 p-1 font-mono text-xl cursor-pointer hover:bg-red-900 hover:rounded-lg sm:text-md lg:text-xl text-[#fff]">
+              <span onClick={handleLogout} className="flex items-center gap-4 p-1 font-mono text-xl cursor-pointer hover:bg-red-900 hover:rounded-lg sm:text-md lg:text-xl text-[#fff]">
                 <IoIosLogOut size={20} />{" "}
                 <span className="hidden md:block">Log Out</span>
               </span>

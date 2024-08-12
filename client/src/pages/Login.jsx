@@ -1,6 +1,6 @@
 import { useState } from "react";
-
-// import { axios } from "axios";
+import  axios  from "axios";
+import { useNavigate } from "react-router-dom";
 
 import { Logo } from "../utils/Constants";
 
@@ -9,9 +9,8 @@ const LoginPage = () => {
         email: "",
         password: "",
       });
-    
-    //   const router = useRouter();
-    
+      const navigate = useNavigate()
+
       const handleInputChange = (e) => {
         const { name, value } = e.target;
         setUser((prevUser) => ({
@@ -21,19 +20,23 @@ const LoginPage = () => {
       };
     
 
-  // const handleLogin = () => {
-  //   axios.post('http://localhost:4000/api/login', {
-  //     username: 'admin',
-  //     password: 'adminpassword'
-  //   })
-  //   .then(response => {
-  //     setAuthToken(response.data.token);
-  //     setIsAdmin(true);
-  //   })
-  //   .catch(error => {
-  //     console.error('Login failed', error);
-  //   });
-  // };
+      const handleLogin = (username,password) => {
+        axios.post('http://localhost:4000/api/login', {
+          username: username,
+          password: password
+        })
+        .then(response => {
+          const token = import.meta.env.TOKEN;
+          // setIsAdmin(true);
+          localStorage.setItem('token', token);
+          navigate('/dashboard')
+          console.log("login successful",response)
+        })
+        .catch(error => {
+          console.error('Login failed', error);
+        });
+      };
+    
 
 
   return (
@@ -71,7 +74,7 @@ const LoginPage = () => {
             />
           </span>
           <button 
-          
+          onClick={()=>handleLogin(user.username,user.password)}
            className="px-10 py-1.5  bg-[#ff184a] rounded-lg w-full">
             Submit
           </button>
